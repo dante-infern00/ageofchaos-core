@@ -936,6 +936,15 @@ uint32 Unit::DealDamage(Unit* pVictim, uint32 damage, CleanDamage const* cleanDa
 #undef SKIP_STEALTH
 }
 
+void AnnounceKill(uint32 entry, Player* player, Unit* pVictim)
+{
+	if (pVictim && pVictim->ToCreature() && pVictim->ToCreature()->GetEntry() == entry)
+	{
+		if (player)
+			sWorld.SendWorldText(50006, player->GetName(), pVictim->GetName());
+	}
+}
+
 void Unit::Kill(Unit* pVictim, SpellEntry const* spellProto, bool durabilityLoss)
 {
     // find player: owner of controlled `this` or `this` itself maybe
@@ -1240,6 +1249,117 @@ void Unit::Kill(Unit* pVictim, SpellEntry const* spellProto, bool durabilityLoss
             if (BattleGround* bg = pPlayerTap->GetBattleGround())
                 bg->HandleKillUnit(pCreatureVictim, pPlayerTap);
     }
+
+	AnnounceKill(639, pPlayerTap, pCreatureVictim);
+	AnnounceKill(3654, pPlayerTap, pCreatureVictim);
+	AnnounceKill(4829, pPlayerTap, pCreatureVictim);
+	AnnounceKill(4275, pPlayerTap, pCreatureVictim);
+	AnnounceKill(1716, pPlayerTap, pCreatureVictim);
+	AnnounceKill(6487, pPlayerTap, pCreatureVictim);
+	AnnounceKill(3975, pPlayerTap, pCreatureVictim);
+	AnnounceKill(3977, pPlayerTap, pCreatureVictim);
+	AnnounceKill(4421, pPlayerTap, pCreatureVictim);
+	AnnounceKill(7800, pPlayerTap, pCreatureVictim);
+	AnnounceKill(2748, pPlayerTap, pCreatureVictim);
+	AnnounceKill(7358, pPlayerTap, pCreatureVictim);
+	AnnounceKill(7267, pPlayerTap, pCreatureVictim);
+	AnnounceKill(7273, pPlayerTap, pCreatureVictim);
+	AnnounceKill(12201, pPlayerTap, pCreatureVictim);
+	AnnounceKill(5710, pPlayerTap, pCreatureVictim);
+	AnnounceKill(5709, pPlayerTap, pCreatureVictim);
+	AnnounceKill(8443, pPlayerTap, pCreatureVictim);
+	AnnounceKill(9019, pPlayerTap, pCreatureVictim);
+	AnnounceKill(1853, pPlayerTap, pCreatureVictim);
+	AnnounceKill(10440, pPlayerTap, pCreatureVictim);
+	AnnounceKill(10813, pPlayerTap, pCreatureVictim);
+	AnnounceKill(9568, pPlayerTap, pCreatureVictim);
+	AnnounceKill(10584, pPlayerTap, pCreatureVictim);
+	AnnounceKill(10363, pPlayerTap, pCreatureVictim);
+	AnnounceKill(11501, pPlayerTap, pCreatureVictim);
+	AnnounceKill(11492, pPlayerTap, pCreatureVictim);
+	AnnounceKill(11486, pPlayerTap, pCreatureVictim);
+	AnnounceKill(11496, pPlayerTap, pCreatureVictim);
+	// MC
+	AnnounceKill(12118, pPlayerTap, pCreatureVictim);
+	AnnounceKill(11982, pPlayerTap, pCreatureVictim);
+	AnnounceKill(12259, pPlayerTap, pCreatureVictim);
+	AnnounceKill(12057, pPlayerTap, pCreatureVictim);
+	AnnounceKill(12264, pPlayerTap, pCreatureVictim);
+	AnnounceKill(12056, pPlayerTap, pCreatureVictim);
+	AnnounceKill(11988, pPlayerTap, pCreatureVictim);
+	AnnounceKill(12098, pPlayerTap, pCreatureVictim);
+	AnnounceKill(12018, pPlayerTap, pCreatureVictim);
+	AnnounceKill(11502, pPlayerTap, pCreatureVictim);
+	// BWL
+	AnnounceKill(12435, pPlayerTap, pCreatureVictim);
+	AnnounceKill(13020, pPlayerTap, pCreatureVictim);
+	AnnounceKill(12017, pPlayerTap, pCreatureVictim);
+	AnnounceKill(11983, pPlayerTap, pCreatureVictim);
+	AnnounceKill(14601, pPlayerTap, pCreatureVictim);
+	AnnounceKill(11981, pPlayerTap, pCreatureVictim);
+	AnnounceKill(14020, pPlayerTap, pCreatureVictim);
+	AnnounceKill(11583, pPlayerTap, pCreatureVictim);
+	// AQ40
+	AnnounceKill(15263, pPlayerTap, pCreatureVictim);
+	AnnounceKill(15516, pPlayerTap, pCreatureVictim);
+	AnnounceKill(15510, pPlayerTap, pCreatureVictim);
+	AnnounceKill(15509, pPlayerTap, pCreatureVictim);
+	AnnounceKill(15276, pPlayerTap, pCreatureVictim);
+	AnnounceKill(15275, pPlayerTap, pCreatureVictim);
+	AnnounceKill(15727, pPlayerTap, pCreatureVictim);
+	AnnounceKill(15543, pPlayerTap, pCreatureVictim);
+	AnnounceKill(15544, pPlayerTap, pCreatureVictim);
+	AnnounceKill(15511, pPlayerTap, pCreatureVictim);
+	AnnounceKill(15299, pPlayerTap, pCreatureVictim);
+	AnnounceKill(15517, pPlayerTap, pCreatureVictim);
+	// AQ20
+	AnnounceKill(15348, pPlayerTap, pCreatureVictim);
+	AnnounceKill(15341, pPlayerTap, pCreatureVictim);
+	AnnounceKill(15340, pPlayerTap, pCreatureVictim);
+	AnnounceKill(15370, pPlayerTap, pCreatureVictim);
+	AnnounceKill(15369, pPlayerTap, pCreatureVictim);
+	AnnounceKill(15339, pPlayerTap, pCreatureVictim);
+	// ZG
+	AnnounceKill(14507, pPlayerTap, pCreatureVictim);
+	AnnounceKill(14517, pPlayerTap, pCreatureVictim);
+	AnnounceKill(14510, pPlayerTap, pCreatureVictim);
+	AnnounceKill(14509, pPlayerTap, pCreatureVictim);
+	AnnounceKill(14515, pPlayerTap, pCreatureVictim);
+	AnnounceKill(14834, pPlayerTap, pCreatureVictim);
+	AnnounceKill(11382, pPlayerTap, pCreatureVictim);
+	AnnounceKill(14988, pPlayerTap, pCreatureVictim);
+	AnnounceKill(15083, pPlayerTap, pCreatureVictim);
+	AnnounceKill(15114, pPlayerTap, pCreatureVictim);
+	AnnounceKill(11380, pPlayerTap, pCreatureVictim);
+	AnnounceKill(15082, pPlayerTap, pCreatureVictim);
+	AnnounceKill(15084, pPlayerTap, pCreatureVictim);
+	AnnounceKill(15085, pPlayerTap, pCreatureVictim);
+	// NAX
+	AnnounceKill(15956, pPlayerTap, pCreatureVictim);
+	AnnounceKill(15953, pPlayerTap, pCreatureVictim);
+	AnnounceKill(15952, pPlayerTap, pCreatureVictim);
+	AnnounceKill(15954, pPlayerTap, pCreatureVictim);
+	AnnounceKill(15936, pPlayerTap, pCreatureVictim);
+	AnnounceKill(16011, pPlayerTap, pCreatureVictim);
+	AnnounceKill(16061, pPlayerTap, pCreatureVictim);
+	AnnounceKill(16060, pPlayerTap, pCreatureVictim);
+	AnnounceKill(16064, pPlayerTap, pCreatureVictim);
+	AnnounceKill(16065, pPlayerTap, pCreatureVictim);
+	AnnounceKill(16062, pPlayerTap, pCreatureVictim);
+	AnnounceKill(16063, pPlayerTap, pCreatureVictim);
+	AnnounceKill(16028, pPlayerTap, pCreatureVictim);
+	AnnounceKill(15931, pPlayerTap, pCreatureVictim);
+	AnnounceKill(15932, pPlayerTap, pCreatureVictim);
+	AnnounceKill(15928, pPlayerTap, pCreatureVictim);
+	AnnounceKill(15989, pPlayerTap, pCreatureVictim);
+	AnnounceKill(15990, pPlayerTap, pCreatureVictim);
+    // WORLD BOSSES
+	AnnounceKill(6109, pPlayerTap, pCreatureVictim);
+	AnnounceKill(12397, pPlayerTap, pCreatureVictim);
+	AnnounceKill(14890, pPlayerTap, pCreatureVictim);
+	AnnounceKill(14889, pPlayerTap, pCreatureVictim);
+	AnnounceKill(14888, pPlayerTap, pCreatureVictim);
+	AnnounceKill(14887, pPlayerTap, pCreatureVictim);
 
     pVictim->InterruptSpellsCastedOnMe(false, true);
 }
