@@ -37,6 +37,24 @@
 #include "ScriptMgr.h"
 #include "Util.h"
 #include "Anticheat.h"
+#include "Language.h"
+
+std::string ShowItemListHelper(uint32 itemId)
+{
+	ItemPrototype const* itemProto = sObjectMgr.GetItemPrototype(itemId);
+	if (!itemProto)
+		return "Unknown";
+
+	std::string name;
+	if (name.empty())
+		name = itemProto->Name1;
+
+	uint32 color = ItemQualityColors[itemProto->Quality];
+	std::ostringstream itemStr;
+	itemStr << "|c" << std::hex << color << "|Hitem:" << std::to_string(itemProto->ItemId) << ":0:0:0:0:0:0:0|h[" << name << "]|h|r";
+	return itemStr.str();
+
+}
 
 void WorldSession::HandleAutostoreLootItemOpcode(WorldPacket& recv_data)
 {
@@ -216,6 +234,20 @@ void WorldSession::HandleAutostoreLootItemOpcode(WorldPacket& recv_data)
 
         sLog.Player(this, LOG_LOOTS, LOG_LVL_MINIMAL, "%s loots %ux%u [loot from %s]", _player->GetShortDescription().c_str(), item->count, item->itemid, lguid.GetString().c_str());
         player->SendNewItem(newitem, uint32(item->count), false, false, true);
+		ItemPrototype const* itemProto = sObjectMgr.GetItemPrototype(newitem->GetEntry());
+		if (lguid.GetHigh() == HIGHGUID_GAMEOBJECT)
+		{
+			GameObject* go = player->GetMap()->GetGameObject(lguid);
+			if (go && itemProto && itemProto->Quality == ITEM_QUALITY_EPIC)
+				sWorld.SendWorldText(LANG_ITEM_LOOTED, _player->GetName(), ShowItemListHelper(itemProto->ItemId).c_str(), go->GetName()); // send this message
+		}
+
+		if (lguid.GetHigh() == HIGHGUID_UNIT)
+		{
+			Creature* pCreature = GetPlayer()->GetMap()->GetCreature(lguid);
+			if (pCreature && itemProto && itemProto->Quality == ITEM_QUALITY_EPIC)
+				sWorld.SendWorldText(LANG_ITEM_LOOTED, _player->GetName(), ShowItemListHelper(itemProto->ItemId).c_str(), pCreature->GetName()); // send this message
+		}
         player->OnReceivedItem(newitem);
     }
     else
