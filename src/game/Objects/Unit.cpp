@@ -945,6 +945,25 @@ void AnnounceKill(uint32 entry, Player* player, Unit* pVictim)
 	}
 }
 
+void AnnounceKillGuard(uint32 entry, Player* player, Unit* pVictim)
+{
+	if (pVictim && pVictim->ToCreature() && pVictim->ToCreature()->GetEntry() == entry)
+	{
+		if (player)
+			sWorld.SendWorldText(50007, pVictim->GetName());
+	}
+}
+
+void AnnounceKillGuard2(uint32 entry, Player* player, Unit* pVictim)
+{
+	if (pVictim && pVictim->ToCreature() && pVictim->ToCreature()->GetEntry() == entry)
+	{
+		if (player)
+			sWorld.SendWorldText(50008, pVictim->GetName());
+	}
+}
+
+
 void Unit::Kill(Unit* pVictim, SpellEntry const* spellProto, bool durabilityLoss)
 {
     // find player: owner of controlled `this` or `this` itself maybe
@@ -1360,6 +1379,202 @@ void Unit::Kill(Unit* pVictim, SpellEntry const* spellProto, bool durabilityLoss
 	AnnounceKill(14889, pPlayerTap, pCreatureVictim);
 	AnnounceKill(14888, pPlayerTap, pCreatureVictim);
 	AnnounceKill(14887, pPlayerTap, pCreatureVictim);
+	// GUARDS
+	AnnounceKillGuard(15441, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(15442, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(8151, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(14365, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(14367, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(14363, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(68, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(15138, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(15137, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(15136, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(14730, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(14380, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(14379, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(14378, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(14304, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(13839, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(13076, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(12160, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(10696, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(10038, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(10037, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(10036, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(9525, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(15616, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(15617, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(8155, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(12338, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(8154, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(8147, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(8096, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(8055, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(8017, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(8016, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(7980, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(7975, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(7939, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(7865, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(7730, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(7489, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(6087, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(6086, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(5953, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(5952, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(5725, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(5624, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(5595, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(4979, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(4262, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(3571, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(3501, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(3297, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(3296, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(3224, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(3223, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(3222, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(3221, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(3220, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(3219, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(3218, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(3217, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(3215, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(3212, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(3084, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(3083, pPlayerTap, pCreatureVictim);	
+	AnnounceKillGuard2(14402, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(14403, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(14404, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(2621, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(2405, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(2386, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(2210, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(2209, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(1976, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(1756, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(1746, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(1745, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(1744, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(1743, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(1742, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(1738, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(1735, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(14717, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(1642, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(1475, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(1434, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(1423, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(1064, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(936, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(932, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(933, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(903, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(935, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(14423, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(14439, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(14438, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(859, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(934, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(866, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(853, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(727, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(14377, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(14376, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(14375, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(487, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(870, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(869, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(489, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(490, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(874, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(876, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(488, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(840, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(8310, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(1101, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(1100, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(1203, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(999, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(828, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(499, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(827, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(1098, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(576, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(885, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(495, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(887, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(826, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(1001, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(886, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(1099, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(2470, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(888, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(1436, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(1204, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(2142, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(494, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(11040, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(1000, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(4423, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(2041, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(12903, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(2584, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(2583, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(2738, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(2585, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(15130, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(2468, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(2469, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(2466, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(2105, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(8055, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(1336, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(1281, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(1335, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(2508, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(1090, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(1282, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(2507, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(1330, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(2518, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(1343, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(1278, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(2512, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(1342, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(3836, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(2510, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(1329, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(1332, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(2526, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(2514, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(1331, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(2517, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(2516, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(1283, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(1340, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(2513, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(2506, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(1334, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(2524, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(2528, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(1337, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(1091, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(1277, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(1279, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(2515, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(1280, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(1338, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(2509, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(1089, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(1276, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(2511, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(2525, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(2527, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(14442, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(14441, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(14440, pPlayerTap, pCreatureVictim);
 
     pVictim->InterruptSpellsCastedOnMe(false, true);
 }
