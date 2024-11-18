@@ -1350,6 +1350,9 @@ void World::SetInitialWorldSettings()
     // Remove the bones (they should not exist in DB though) and old corpses after a restart
     CharacterDatabase.PExecute("DELETE FROM `corpse` WHERE `corpse_type` = '0' OR `time` < (UNIX_TIMESTAMP()-'%u')", 3 * DAY);
 
+    sLog.Out(LOG_BASIC, LOG_LVL_MINIMAL, "Loading Script Names...");
+    sScriptMgr.LoadScriptNames();
+
     sLog.Out(LOG_BASIC, LOG_LVL_MINIMAL, "Loading spells ...");
     sSpellMgr.LoadSpells();
 
@@ -1388,9 +1391,6 @@ void World::SetInitialWorldSettings()
     LoadDBCStores(dbcPath);
     DetectDBCLang();
     sObjectMgr.SetDBCLocaleIndex(GetDefaultDbcLocale());    // Get once for all the locale index of DBC language (console/broadcasts)
-
-    sLog.Out(LOG_BASIC, LOG_LVL_MINIMAL, "Loading Script Names...");
-    sScriptMgr.LoadScriptNames();
 
     sLog.Out(LOG_BASIC, LOG_LVL_MINIMAL, "Loading MapTemplate...");
     sObjectMgr.LoadMapTemplate();
