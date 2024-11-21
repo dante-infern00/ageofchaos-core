@@ -1148,6 +1148,11 @@ enum MangosStrings
     // opvp si
     LANG_OPVP_SI_CAPTURE_H              = 10049,
     LANG_OPVP_SI_CAPTURE_A              = 10050,
-    LANG_ITEM_LOOTED                    = 50005,
+
+    // Custom chat announces
+    LANG_ANNOUNCE_EPIC_ITEM_LOOTED      = 50005,
+    LANG_ANNOUNCE_BOSS_DEFEAT           = 50006,
+    LANG_ANNOUNCE_GUARD_KILLED_A        = 50007,
+    LANG_ANNOUNCE_GUARD_KILLED_H        = 50008
 };
 #endif

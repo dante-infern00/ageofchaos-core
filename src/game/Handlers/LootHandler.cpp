@@ -239,14 +239,14 @@ void WorldSession::HandleAutostoreLootItemOpcode(WorldPacket& recv_data)
 		{
 			GameObject* go = player->GetMap()->GetGameObject(lguid);
 			if (go && itemProto && itemProto->Quality == ITEM_QUALITY_EPIC)
-				sWorld.SendWorldText(LANG_ITEM_LOOTED, _player->GetName(), ShowItemListHelper(itemProto->ItemId).c_str(), go->GetName()); // send this message
+				sWorld.SendWorldText(LANG_ANNOUNCE_EPIC_ITEM_LOOTED, _player->GetName(), ShowItemListHelper(itemProto->ItemId).c_str(), go->GetName()); // send this message
 		}
 
 		if (lguid.GetHigh() == HIGHGUID_UNIT)
 		{
 			Creature* pCreature = GetPlayer()->GetMap()->GetCreature(lguid);
 			if (pCreature && itemProto && itemProto->Quality == ITEM_QUALITY_EPIC)
-				sWorld.SendWorldText(LANG_ITEM_LOOTED, _player->GetName(), ShowItemListHelper(itemProto->ItemId).c_str(), pCreature->GetName()); // send this message
+				sWorld.SendWorldText(LANG_ANNOUNCE_EPIC_ITEM_LOOTED, _player->GetName(), ShowItemListHelper(itemProto->ItemId).c_str(), pCreature->GetName()); // send this message
 		}
         player->OnReceivedItem(newitem);
     }
@@ -330,7 +330,7 @@ void WorldSession::HandleLootMoneyOpcode(WorldPacket& /*recv_data*/)
                 Player* playerGroup = itr->getSource();
                 if (!playerGroup)
                     continue;
-                
+
                 if (player->IsWithinLootXPDist(playerGroup))
                     playersNear.push_back(playerGroup);
             }
@@ -683,7 +683,7 @@ void WorldSession::HandleLootMasterGiveOpcode(WorldPacket& recv_data)
             _player->SendLootError(lootGuid, LOOT_ERROR_DIDNT_KILL);
             return;
         }
-            
+
         if (!_player->IsAtGroupRewardDistance(creature))
         {
             _player->SendLootError(lootGuid, LOOT_ERROR_TOO_FAR);
