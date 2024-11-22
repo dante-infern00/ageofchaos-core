@@ -1411,8 +1411,16 @@ void Unit::Kill(Unit* pVictim, SpellEntry const* spellProto, bool durabilityLoss
 	AnnounceKillGuard2(8154, pPlayerTap, pCreatureVictim);
 	AnnounceKillGuard2(8147, pPlayerTap, pCreatureVictim);
 	AnnounceKillGuard(8096, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(4951, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(4947, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard(8015, pPlayerTap, pCreatureVictim);
 	AnnounceKillGuard(8055, pPlayerTap, pCreatureVictim);
 	AnnounceKillGuard2(8017, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(868, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(867, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(865, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(864, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(863, pPlayerTap, pCreatureVictim);
 	AnnounceKillGuard2(8016, pPlayerTap, pCreatureVictim);
 	AnnounceKillGuard2(7980, pPlayerTap, pCreatureVictim);
 	AnnounceKillGuard2(7975, pPlayerTap, pCreatureVictim);
@@ -1426,6 +1434,7 @@ void Unit::Kill(Unit* pVictim, SpellEntry const* spellProto, bool durabilityLoss
 	AnnounceKillGuard2(5952, pPlayerTap, pCreatureVictim);
 	AnnounceKillGuard2(5725, pPlayerTap, pCreatureVictim);
 	AnnounceKillGuard2(5624, pPlayerTap, pCreatureVictim);
+	AnnounceKillGuard2(11180, pPlayerTap, pCreatureVictim);
 	AnnounceKillGuard(5595, pPlayerTap, pCreatureVictim);
 	AnnounceKillGuard(4979, pPlayerTap, pCreatureVictim);
 	AnnounceKillGuard(4262, pPlayerTap, pCreatureVictim);
