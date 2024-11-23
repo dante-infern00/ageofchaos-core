@@ -1900,3 +1900,43 @@ bool ChatHandler::HandleZonePlayersCommand(char* /*args*/)
     m_session->GetPlayer()->SendZonePlayersInfo();
     return true;
 }
+
+bool ChatHandler::HandleRealmCommand(char* args)
+{
+    static constexpr uint32 REALM_CHAT_REQUIRED_LEVEL   = 15;
+    static constexpr time_t REALM_CHAT_COOLDOWN         = 15;
+
+    std::string sender = "[Console]";
+
+    if (m_session)
+    {
+        Player* player = m_session->GetPlayer();
+
+        if (player->GetLevel() < REALM_CHAT_REQUIRED_LEVEL)
+        {
+            PSendSysMessage(LANG_REALM_CHAT_ERROR_LEVEL, REALM_CHAT_REQUIRED_LEVEL);
+            SetSentErrorMessage(true);
+            return false;
+        }
+
+        time_t now      = sWorld.GetGameTime();
+        time_t passed   = now - player->GetLastRealmChatSendTime();
+
+        if (passed < REALM_CHAT_COOLDOWN)
+        {
+            PSendSysMessage(LANG_REALM_CHAT_ERROR_COOLDOWN, REALM_CHAT_COOLDOWN - passed);
+            SetSentErrorMessage(true);
+            return false;
+        }
+
+        player->SetLastRealmChatSendTime(now);
+        sender = GetNameLink();
+    }
+
+    char* message = ExtractArg(&args);
+    if (!message)
+        return false;
+
+    sWorld.SendWorldText(LANG_REALM_CHAT_MESSAGE, sender.c_str(), message);
+    return true;
+}

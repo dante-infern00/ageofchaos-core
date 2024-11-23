@@ -1027,6 +1027,7 @@ class ChatHandler
         bool HandleQuitCommand(char* args);
 
         bool HandleZonePlayersCommand(char* args);
+        bool HandleRealmCommand(char* args);
 
         //! Development Commands
         bool HandleSaveAllCommand(char* args);

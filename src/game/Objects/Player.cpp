@@ -741,6 +741,7 @@ Player::Player(WorldSession* session) : Unit(),
     m_longSightRange = 0.0f;
 
     m_lastGuardKilledAnnounceTime = 0;
+    m_lastRealmChatSendTime = 0;
 }
 
 Player::~Player()
@@ -23120,4 +23121,14 @@ void Player::SendZonePlayersInfo()
     }
 
     ChatHandler(this).PSendSysMessage(LANG_ANNOUNCE_ZONE_PLAYERS_INFO, alliancePlayersCount, hordePlayersCount);
+}
+
+time_t Player::GetLastRealmChatSendTime() const
+{
+    return m_lastRealmChatSendTime;
+}
+
+void Player::SetLastRealmChatSendTime(time_t time)
+{
+    m_lastRealmChatSendTime = time;
 }

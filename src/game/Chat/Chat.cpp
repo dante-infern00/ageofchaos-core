@@ -1175,6 +1175,7 @@ ChatCommand * ChatHandler::getCommandTable()
 
     static ChatCommand commandTable[] =
     {
+        { "realm",          SEC_PLAYER,         true, &ChatHandler::HandleRealmCommand,                "", nullptr              },
         { "account",        SEC_PLAYER,         true, nullptr,                                         "", accountCommandTable  },
         { "auction",        SEC_TICKETMASTER,   false, nullptr,                                        "", auctionCommandTable  },
         { "cast",           SEC_DEVELOPER,      false, nullptr,                                        "", castCommandTable     },

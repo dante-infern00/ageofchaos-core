@@ -2704,6 +2704,12 @@ class Player final: public Unit
 
     public:
         void SendZonePlayersInfo();
+
+    private:
+        time_t m_lastRealmChatSendTime;
+    public:
+        time_t GetLastRealmChatSendTime() const;
+        void   SetLastRealmChatSendTime(time_t time);
 };
 
 inline Player* Object::ToPlayer()
