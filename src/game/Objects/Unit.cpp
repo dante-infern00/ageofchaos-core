@@ -939,31 +939,26 @@ uint32 Unit::DealDamage(Unit* pVictim, uint32 damage, CleanDamage const* cleanDa
 
 void AnnounceKill(uint32 entry, Player* player, Unit* pVictim)
 {
-	if (pVictim && pVictim->ToCreature() && pVictim->ToCreature()->GetEntry() == entry)
-	{
-		if (player)
-			sWorld.SendWorldText(LANG_ANNOUNCE_BOSS_DEFEAT, player->GetName(), pVictim->GetName());
-	}
+    if (pVictim && pVictim->ToCreature() && pVictim->ToCreature()->GetEntry() == entry)
+        if (player)
+            sWorld.SendWorldText(LANG_ANNOUNCE_BOSS_DEFEAT, player->GetName(), pVictim->GetName());
 }
 
 void AnnounceKillGuard(uint32 entry, Player* player, Unit* pVictim)
 {
-	if (pVictim && pVictim->ToCreature() && pVictim->ToCreature()->GetEntry() == entry)
-	{
-		if (player)
-			sWorld.SendWorldText(LANG_ANNOUNCE_GUARD_KILLED_A, pVictim->GetName());
-	}
+    if (pVictim && pVictim->ToCreature() && pVictim->ToCreature()->GetEntry() == entry)
+        if (player && player->CheckAndUpdateGuardKilledAnnounceCooldown())
+            if (AreaEntry const* areaEntry = AreaEntry::GetById(pVictim->GetZoneId()))
+                sWorld.SendWorldText(LANG_ANNOUNCE_GUARD_KILLED_BY_H, pVictim->GetName(), player->GetName(), areaEntry->Name);
 }
 
 void AnnounceKillGuard2(uint32 entry, Player* player, Unit* pVictim)
 {
-	if (pVictim && pVictim->ToCreature() && pVictim->ToCreature()->GetEntry() == entry)
-	{
-		if (player)
-			sWorld.SendWorldText(LANG_ANNOUNCE_GUARD_KILLED_H, pVictim->GetName());
-	}
+    if (pVictim && pVictim->ToCreature() && pVictim->ToCreature()->GetEntry() == entry)
+        if (player && player->CheckAndUpdateGuardKilledAnnounceCooldown())
+            if (AreaEntry const* areaEntry = AreaEntry::GetById(pVictim->GetZoneId()))
+                sWorld.SendWorldText(LANG_ANNOUNCE_GUARD_KILLED_BY_A, pVictim->GetName(), player->GetName(), areaEntry->Name);
 }
-
 
 void Unit::Kill(Unit* pVictim, SpellEntry const* spellProto, bool durabilityLoss)
 {

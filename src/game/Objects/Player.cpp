@@ -727,6 +727,8 @@ Player::Player(WorldSession* session) : Unit(),
     m_cameraUpdateTimer = 0;
     m_longSightSpell = 0;
     m_longSightRange = 0.0f;
+
+    m_lastGuardKilledAnnounceTime = 0;
 }
 
 Player::~Player()
@@ -23065,4 +23067,16 @@ void Player::ClearTemporaryWarWithFactions()
         }
         m_temporaryAtWarFactions.clear();
     }
+}
+
+bool Player::CheckAndUpdateGuardKilledAnnounceCooldown()
+{
+    static constexpr time_t WORLD_ANNOUNCE_GUARD_KILLED_COOLDOWN = 90;
+    time_t now = sWorld.GetGameTime();
+
+    if (now - m_lastGuardKilledAnnounceTime < WORLD_ANNOUNCE_GUARD_KILLED_COOLDOWN)
+        return false;
+
+    m_lastGuardKilledAnnounceTime = now;
+    return true;
 }
