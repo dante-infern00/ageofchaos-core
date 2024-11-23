@@ -188,7 +188,7 @@ class ChatHandler
         void CheckIntegrity(ChatCommand *table, ChatCommand *parentCommand);
         static void FillFullCommandsName(ChatCommand* table, std::string prefix);
         static ChatCommand* getCommandTable();
-        
+
         bool HandleAnticheatCommand(char*);
         bool HandleReloadAnticheatCommand(char*);
         bool HandleViewLogCommand(char*);
@@ -487,7 +487,7 @@ class ChatHandler
         bool HandleDebugPlaySoundCommand(char* args);
         bool HandleDebugPlayScriptText(char* args);
         bool HandleDebugPlayMusicCommand(char* args);
-        
+
         bool HandleDebugSendBuyErrorCommand(char* args);
         bool HandleDebugSendChannelNotifyCommand(char* args);
         bool HandleDebugSendChatMsgCommand(char* args);
@@ -1025,6 +1025,8 @@ class ChatHandler
         bool HandleRepairitemsCommand(char* args);
         bool HandleStableCommand(char* args);
         bool HandleQuitCommand(char* args);
+
+        bool HandleZonePlayersCommand(char* args);
 
         //! Development Commands
         bool HandleSaveAllCommand(char* args);

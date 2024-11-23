@@ -1133,7 +1133,7 @@ ChatCommand * ChatHandler::getCommandTable()
         { "",              SEC_TICKETMASTER,  true,  &ChatHandler::HandleGMTicketGetByIdOrNameCommand,    "", nullptr },
         { nullptr,         0,                 false, nullptr,                                             "", nullptr }
     };
-    
+
     static ChatCommand serviceCommandTable[] =
     {
         { "del_characters",     SEC_ADMINISTRATOR,  true,  &ChatHandler::HandleServiceDeleteCharacters,   "", nullptr },
@@ -1304,6 +1304,7 @@ ChatCommand * ChatHandler::getCommandTable()
         { "antispam",       SEC_TICKETMASTER,   true, nullptr,                                         "", AntiSpamCommandTable },
         { "gold",           SEC_BASIC_ADMIN,    true, nullptr,                                         "", goldCommandTable },
         { "wareffort",      SEC_DEVELOPER,      true, nullptr,                                         "", warEffortCommandTable },
+        { "zoneplayers",    SEC_PLAYER,         false, &ChatHandler::HandleZonePlayersCommand,         "", nullptr },
         { nullptr,          0,                  false, nullptr,                                        "", nullptr }
     };
 
@@ -1404,7 +1405,7 @@ void ChatHandler::LoadRbacPermissions()
                 sLog.Out(LOG_DBERROR, LOG_LVL_ERROR, "Unknown RBAC permission id %u assigned to command '%s'!", permissionId, command.c_str());
                 continue;
             }
-            
+
             SetPermissionMaskForCommandInTable(commandTable, command.c_str(), permissionId);
 
         } while (result->NextRow());

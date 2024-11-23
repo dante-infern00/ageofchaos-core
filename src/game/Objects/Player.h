@@ -2701,6 +2701,9 @@ class Player final: public Unit
         time_t m_lastGuardKilledAnnounceTime;
     public:
         bool CheckAndUpdateGuardKilledAnnounceCooldown();
+
+    public:
+        void SendZonePlayersInfo();
 };
 
 inline Player* Object::ToPlayer()

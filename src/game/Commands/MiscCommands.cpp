@@ -724,7 +724,7 @@ bool ChatHandler::HandleInstanceUnbindCommand(char* args)
     Player* player = GetSelectedPlayer();
     if (!player || GetAccessLevel() < SEC_BASIC_ADMIN)
         player = m_session->GetPlayer();
-   
+
     uint32 mapid = 0;
     bool got_map = false;
 
@@ -1892,5 +1892,11 @@ bool ChatHandler::HandleNearGraveCommand(char* args)
             PSendSysMessage(LANG_COMMAND_ZONENOGRAFACTION, zone_id, team_name.c_str());
     }
 
+    return true;
+}
+
+bool ChatHandler::HandleZonePlayersCommand(char* /*args*/)
+{
+    m_session->GetPlayer()->SendZonePlayersInfo();
     return true;
 }

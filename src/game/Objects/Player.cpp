@@ -7202,6 +7202,9 @@ void Player::UpdateZone(uint32 newZone, uint32 newArea)
             Weather* wth = GetMap()->GetWeatherSystem()->FindOrCreateWeather(newZone);
             wth->SendWeatherUpdateToPlayer(this);
         }
+
+        if (GetTerrain()->IsOutdoors(GetPositionX(), GetPositionY(), GetPositionZ()))
+            SendZonePlayersInfo();
     }
 
     m_zoneUpdateId    = newZone;
@@ -23079,4 +23082,25 @@ bool Player::CheckAndUpdateGuardKilledAnnounceCooldown()
 
     m_lastGuardKilledAnnounceTime = now;
     return true;
+}
+
+void Player::SendZonePlayersInfo()
+{
+    uint32 alliancePlayersCount = 0;
+    uint32 hordePlayersCount    = 0;
+
+    Map::PlayerList const& players = GetMap()->GetPlayers();
+    for (Map::PlayerList::const_iterator itr = players.begin(); itr != players.end(); ++itr)
+    {
+        Player const* player = itr->getSource();
+        if (!player || player->GetZoneId() != GetZoneId())
+            continue;
+
+        if (player->GetTeam() == ALLIANCE)
+            ++alliancePlayersCount;
+        else
+            ++hordePlayersCount;
+    }
+
+    ChatHandler(this).PSendSysMessage(LANG_ANNOUNCE_ZONE_PLAYERS_INFO, alliancePlayersCount, hordePlayersCount);
 }
