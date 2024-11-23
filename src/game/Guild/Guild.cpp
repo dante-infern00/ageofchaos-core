@@ -170,6 +170,9 @@ bool Guild::Create(Player* leader, std::string gname)
 
     CreateDefaultGuildRanks(lSession->GetSessionDbLocaleIndex());
 
+    sWorld.SendWorldText(leader->GetTeam() == ALLIANCE ? LANG_ANNOUNCE_GUILD_CREATED_A : LANG_ANNOUNCE_GUILD_CREATED_H,
+        gname.c_str(), ChatHandler(leader).GetNameLink(leader).c_str());
+
     return AddMember(m_LeaderGuid, (uint32)GR_GUILDMASTER) == GuildAddStatus::OK;
 }
 
@@ -801,7 +804,7 @@ void Guild::Roster(WorldSession* session /*= nullptr*/)
         if (spaceLeft <= 0)
             break;
         count++;
-        
+
         if (Player* pl = ObjectAccessor::FindPlayer(ObjectGuid(HIGHGUID_PLAYER, itr.first)))
         {
             data << pl->GetObjectGuid();
