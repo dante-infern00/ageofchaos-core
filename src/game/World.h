@@ -955,6 +955,9 @@ class World
         Messager<World>& GetMessager() { return m_messager; }
 
         LFGQueue& GetLFGQueue() { return m_lfgQueue; }
+
+        // Custom chat announces
+        void AnnounceCreatureAppear(uint32 entry, uint32 zoneId);
     protected:
         void _UpdateGameTime();
         // callback for UpdateRealmCharacters

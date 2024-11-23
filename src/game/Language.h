@@ -1155,6 +1155,7 @@ enum MangosStrings
     LANG_ANNOUNCE_GUARD_KILLED_A        = 50007,
     LANG_ANNOUNCE_GUARD_KILLED_H        = 50008,
     LANG_ANNOUNCE_LEVEL_A               = 50009,
-    LANG_ANNOUNCE_LEVEL_H               = 50010
+    LANG_ANNOUNCE_LEVEL_H               = 50010,
+    LANG_ANNOUNCE_CREATURE_APPEAR       = 50011
 };
 #endif

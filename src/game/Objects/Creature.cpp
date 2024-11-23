@@ -241,13 +241,19 @@ void Creature::AddToWorld()
         if (GetDeathState() == ALIVE || GetDeathState() == JUST_ALIVED)
             m_creatureGroup->OnRespawn(this);
     }
-        
+
     Unit::AddToWorld();
 
     if (!i_AI)
         AIM_Initialize();
-    if (!bWasInWorld && m_zoneScript)
-        m_zoneScript->OnCreatureCreate(this);
+
+    if (!bWasInWorld)
+    {
+        if (m_zoneScript)
+            m_zoneScript->OnCreatureCreate(this);
+
+        sWorld.AnnounceCreatureAppear(GetEntry(), GetZoneId());
+    }
 }
 
 void Creature::RemoveFromWorld()
@@ -609,7 +615,7 @@ bool Creature::UpdateEntry(uint32 entry, GameEventCreatureData const* eventData 
         SetVisibilityModifier(VISIBILITY_DISTANCE_GIGANTIC);
         if (sWorld.getConfig(CONFIG_BOOL_VISIBILITY_FORCE_ACTIVE_OBJECTS))
             SetActiveObjectState(true);
-    } 
+    }
     else if (HasExtraFlag(CREATURE_FLAG_EXTRA_INFINITE_AOI))
     {
         SetVisibilityModifier(MAX_VISIBILITY_DISTANCE);
@@ -787,6 +793,8 @@ void Creature::Update(uint32 update_diff, uint32 diff)
 
                 if (m_zoneScript)
                     m_zoneScript->OnCreatureRespawn(this);
+
+                sWorld.AnnounceCreatureAppear(GetEntry(), GetZoneId());
 
                 if (m_isCreatureLinkingTrigger)
                     GetMap()->GetCreatureLinkingHolder()->DoCreatureLinkingEvent(LINKING_EVENT_RESPAWN, this);
@@ -1886,7 +1894,7 @@ bool Creature::LoadFromDB(uint32 guidlow, Map* map, bool force)
 
     if (data->spawn_flags & SPAWN_FLAG_ACTIVE)
         m_isActiveObject = true;
-    
+
     if (data->visibility_mod)
         m_visibilityModifier = data->visibility_mod;
 
@@ -1999,7 +2007,7 @@ void Creature::LoadDefaultEquipment(GameEventCreatureData const* eventData)
         {
             LoadEquipment(0, true);
             GenerateLootForBody(nullptr, nullptr);
-            
+
             bool usingLoot = false;
             for (auto const& itr : loot.items)
             {
@@ -2479,7 +2487,7 @@ void Creature::CallForHelp(float radius)
 {
     if (radius <= 0.0f || !GetVictim() || IsPet() || IsCharmed())
         return;
-    
+
     MaNGOS::CallOfHelpCreatureInRangeDo u_do(this, GetVictim(), radius);
     MaNGOS::CreatureWorker<MaNGOS::CallOfHelpCreatureInRangeDo> worker(this, u_do);
     Cell::VisitGridObjects(this, worker, radius);
