@@ -544,6 +544,18 @@ void TradeData::SetAccepted(bool state, bool crosssend /*= false*/)
     }
 }
 
+static void SendProfessionWorldAnnounceIfNeeded(Player* player, uint32 skillId, uint32 value)
+{
+    if (value != 300)
+        return;
+
+    SkillLineEntry const* skillInfo = sSkillLineStore.LookupEntry(skillId);
+    if (!skillInfo || skillInfo->categoryId != SKILL_CATEGORY_PROFESSION)
+        return;
+
+    sWorld.SendWorldText(LANG_ANNOUNCE_PROFESSION_SKILL_300, ChatHandler(player).GetNameLink(player).c_str(), skillInfo->name[sWorld.GetDefaultDbcLocale()]);
+}
+
 //== Player ====================================================
 
 Player::Player(WorldSession* session) : Unit(),
@@ -5935,6 +5947,9 @@ bool Player::UpdateSkillPro(uint16 skillId, int32 chance, uint32 step)
         SetUInt32Value(valueIndex, MAKE_SKILL_VALUE(new_value, maxValue));
         if (itr->second.uState != SKILL_NEW)
             itr->second.uState = SKILL_CHANGED;
+
+        SendProfessionWorldAnnounceIfNeeded(this, skillId, new_value);
+
         sLog.Out(LOG_BASIC, LOG_LVL_DEBUG, "Player::UpdateSkillPro Chance=%3.1f%% taken", chance / 10.0);
         return true;
     }
@@ -6249,6 +6264,8 @@ void Player::SetSkill(uint16 id, uint16 currVal, uint16 maxVal, uint16 step /*=0
             }
         }
     }
+
+    SendProfessionWorldAnnounceIfNeeded(this, id, currVal);
 }
 
 bool Player::HasSkill(uint16 id) const
