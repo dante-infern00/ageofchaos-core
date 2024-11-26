@@ -3242,8 +3242,18 @@ void World::AnnounceCreatureAppear(uint32 entry, uint32 zoneId)
 {
     switch (entry)
     {
-//        case 6: // Kobold Vermin, just for example
-//            break;
+        case 6109: // Azuregos 
+            break;
+		case 12397: // Kazzak
+			break;
+		case 14890: // Taerar
+			break;
+		case 14889: // Emeriss
+			break;
+		case 14888: // Lethon
+			break;
+		case 14887: // Ysondre
+			break;
         default:
             return;
     }
