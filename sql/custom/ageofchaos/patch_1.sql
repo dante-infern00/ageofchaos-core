@@ -1,8 +1,62 @@
 /* Broadcasts */
+DELETE FROM `mangos_string` WHERE `entry` = 50005;
 insert into `mangos_string` (`entry`, `content_default`, `content_loc1`, `content_loc2`, `content_loc3`, `content_loc4`, `content_loc5`, `content_loc6`, `content_loc7`, `content_loc8`) values('50005','|cffFF5733Incredible! |cffFFFFFF%s|cffFF5733 looted|r %s |cffFF5733from |cffFFFFFF%s|cffFF5733!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+
+DELETE FROM `mangos_string` WHERE `entry` = 50006;
 insert into `mangos_string` (`entry`, `content_default`, `content_loc1`, `content_loc2`, `content_loc3`, `content_loc4`, `content_loc5`, `content_loc6`, `content_loc7`, `content_loc8`) values('50006','|cffFF5733Congratulations! |cffFFFFFF%s|cffFF5733 has slain |cffFFFFFF%s|cffFF5733!|r',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
-insert into `mangos_string` (`entry`, `content_default`, `content_loc1`, `content_loc2`, `content_loc3`, `content_loc4`, `content_loc5`, `content_loc6`, `content_loc7`, `content_loc8`) values('50007','|cffFF0000Alliance Guard NPC |cffFFFFFF%s|cffFF0000 has been slain!|r',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
-insert into `mangos_string` (`entry`, `content_default`, `content_loc1`, `content_loc2`, `content_loc3`, `content_loc4`, `content_loc5`, `content_loc6`, `content_loc7`, `content_loc8`) values('50008','|cffFF0000Horde Guard NPC |cffFFFFFF%s|cffFF0000 has been slain!|r',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+
+DELETE FROM `mangos_string` WHERE `entry` = 50007;
+INSERT INTO `mangos_string` (`entry`, `content_default`) values
+(50007, "|cffFF0000Alert! |cffFFFFFF%s |cffFF0000has been defeated by Alliance Player |cffFFFFFF%s |cffFF0000in |cffFFFFFF%s|cffFF0000.");
+
+DELETE FROM `mangos_string` WHERE `entry` = 50008;
+INSERT INTO `mangos_string` (`entry`, `content_default`) values
+(50008, "|cffFF0000Alert! |cffFFFFFF%s |cffFF0000has been defeated by Horde Player |cffFFFFFF%s |cffFF0000in |cffFFFFFF%s|cffFF0000.");
+
+DELETE FROM `mangos_string` WHERE `entry` = 50009;
+INSERT INTO `mangos_string` (`entry`, `content_default`) values
+(50009, "|cffFF5733Hail to our Champion! |cffFFFFFF%s |cffFF5733Your success is a victory for all the Alliance. Congratulations on achieving Level |cffFFFFFF%u|cffFF5733!");
+
+DELETE FROM `mangos_string` WHERE `entry` = 50010;
+INSERT INTO `mangos_string` (`entry`, `content_default`) values
+(50010, "|cffFF5733Lok'tar Ogar! |cffFFFFFF%s |cffFF5733Your strength and victory bring glory to the Horde! Congratulations on achieving Level |cffFFFFFF%u|cffFF5733!");
+
+DELETE FROM `mangos_string` WHERE `entry` = 50011;
+INSERT INTO `mangos_string` (`entry`, `content_default`) values
+(50011, "|cffFF0000Beware! |cffFFFFFF%s |cffFF0000has just appeared in |cffFFFFFF%s|cffFF0000.");
+
+DELETE FROM `mangos_string` WHERE `entry` = 50012;
+INSERT INTO `mangos_string` (`entry`, `content_default`) values
+(50012, "|cffFF5733Alliance forces grow stronger! |cffFFFFFF%s|cffFF5733, led by |cffFFFFFF%s|cffFF5733, joins our ranks!");
+
+DELETE FROM `mangos_string` WHERE `entry` = 50013;
+INSERT INTO `mangos_string` (`entry`, `content_default`) values
+(50013, "|cffFF5733A new clan is born! |cffFFFFFF%s|cffFF5733, led by |cffFFFFFF%s|cffFF5733, has formed!");
+
+DELETE FROM `mangos_string` WHERE `entry` = 50014;
+INSERT INTO `mangos_string` (`entry`, `content_default`) values
+(50014, "|cffFF5733Look out for |cffFFFFFF%u |cffFF5733Alliance and |cffFFFFFF%u |cffFF5733Horde players in this zone!");
+
+DELETE FROM `mangos_string` WHERE `entry` = 50015;
+INSERT INTO `mangos_string` (`entry`, `content_default`) values
+(50015, "|cffFF5733Congratulations to |cffFFFFFF%s |cffFF5733for mastering |cffFF5733%s |cffFFFFFFand reaching the ultimate skill level of 300!");
+
+DELETE FROM `mangos_string` WHERE `entry` = 50016;
+INSERT INTO `mangos_string` (`entry`, `content_default`) values
+(50016, "|cffFFFFFFYou need to reach level %u |cffFFFFFFto use the global chat.");
+
+DELETE FROM `mangos_string` WHERE `entry` = 50017;
+INSERT INTO `mangos_string` (`entry`, `content_default`) values
+(50017, "|cffFF0000Please wait another %u |cffFF0000seconds to send a message in the global chat.");
+
+DELETE FROM `mangos_string` WHERE `entry` = 50018;
+INSERT INTO `mangos_string` (`entry`, `content_default`) values
+(50018, "|cffB6D7A8[Realm] %s|cffB6D7A8: %s");
+
+
+
+
+
 
 /* Guard NPC Levels */
 UPDATE creature_template SET level_min = 12, level_max = 15 WHERE entry = 1423;
