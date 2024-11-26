@@ -1906,6 +1906,9 @@ bool ChatHandler::HandleRealmCommand(char* args)
     static constexpr uint32 REALM_CHAT_REQUIRED_LEVEL   = 15;
     static constexpr time_t REALM_CHAT_COOLDOWN         = 15;
 
+    if (!*args)
+        return false;
+
     std::string sender = "[Console]";
 
     if (m_session)
@@ -1933,10 +1936,6 @@ bool ChatHandler::HandleRealmCommand(char* args)
         sender = GetNameLink();
     }
 
-    char* message = ExtractArg(&args);
-    if (!message)
-        return false;
-
-    sWorld.SendWorldText(LANG_REALM_CHAT_MESSAGE, sender.c_str(), message);
+    sWorld.SendWorldText(LANG_REALM_CHAT_MESSAGE, sender.c_str(), args);
     return true;
 }
