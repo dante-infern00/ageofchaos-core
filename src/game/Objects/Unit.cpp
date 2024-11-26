@@ -1376,6 +1376,7 @@ void Unit::Kill(Unit* pVictim, SpellEntry const* spellProto, bool durabilityLoss
 	AnnounceKill(14888, pPlayerTap, pCreatureVictim);
 	AnnounceKill(14887, pPlayerTap, pCreatureVictim);
 	// GUARDS
+	AnnounceKillGuard(14715, pPlayerTap, pCreatureVictim);
 	AnnounceKillGuard(15441, pPlayerTap, pCreatureVictim);
 	AnnounceKillGuard(15442, pPlayerTap, pCreatureVictim);
 	AnnounceKillGuard(8151, pPlayerTap, pCreatureVictim);
